@@ -1,4 +1,6 @@
 import { GasolineIcon } from "@assets/index";
+import { useNavigation } from "@react-navigation/native";
+import { RectButtonProps } from "react-native-gesture-handler";
 
 import {
   Container,
@@ -23,13 +25,19 @@ type CarData = {
   thumbnail: string;
 };
 
-interface Props {
+interface Props extends RectButtonProps {
   data: CarData;
 }
 
-const Car = ({ data }: Props) => {
+const Car = ({ data, ...rest }: Props) => {
+  const { navigate } = useNavigation();
+
+  const handleCarDetails = () => {
+    navigate("CarDetails");
+  };
+
   return (
-    <Container>
+    <Container {...rest} onPress={handleCarDetails}>
       <CarDetail>
         <CarBrand>{data.brand}</CarBrand>
         <CarName>{data.name}</CarName>

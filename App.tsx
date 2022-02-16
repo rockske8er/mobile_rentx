@@ -13,10 +13,7 @@ import {
 import { ThemeProvider } from "styled-components/native";
 import theme from "./src/theme";
 
-import { Home } from "@screens/Home";
-import { CarDetails } from "@screens/CarDetails";
-import { Scheduling } from "@screens/Scheduling";
-import { SchedulingDetails } from "@screens/SchedulingDetails";
+import { Routes } from "./src/routes";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -39,7 +36,7 @@ const App = () => {
           translucent
           backgroundColor={"transparent"}
         />
-        <SchedulingDetails />
+        <Routes />
       </ThemeProvider>
     </GestureHandlerRootView>
   );

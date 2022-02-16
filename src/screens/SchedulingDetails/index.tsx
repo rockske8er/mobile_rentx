@@ -40,15 +40,22 @@ import {
 } from "@assets/index";
 
 import { RFValue } from "react-native-responsive-fontsize";
+import { useNavigation } from "@react-navigation/native";
 
 interface Props {}
 
 const SchedulingDetails = ({}: Props) => {
   const { Colors } = useTheme();
+
+  const { navigate, goBack } = useNavigation();
+
+  const handleSchedulingSuccess = () => {
+    navigate("SchedulingComplete");
+  };
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => console.log("Back")} />
+        <BackButton onPress={goBack} />
       </Header>
 
       <CarImages>
@@ -123,7 +130,11 @@ const SchedulingDetails = ({}: Props) => {
       </Wrapper>
 
       <Footer>
-        <Button name="Alugar Agora" color={Colors.Success} />
+        <Button
+          name="Alugar Agora"
+          color={Colors.Success}
+          onPress={handleSchedulingSuccess}
+        />
       </Footer>
     </Container>
   );

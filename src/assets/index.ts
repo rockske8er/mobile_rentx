@@ -10,6 +10,8 @@ import ExchangeIcon from "./exchange.svg";
 import GasolineIcon from "./gasoline.svg";
 import ForceIcon from "./force.svg";
 import EnergyIcon from "./energy.svg";
+import LogoBackgroundIcon from "./logo_background_gray.svg";
+import DoneIcon from "./done.svg";
 
 export {
   Logo,
@@ -22,4 +24,6 @@ export {
   PeopleIcon,
   ExchangeIcon,
   ArrowIcon,
+  LogoBackgroundIcon,
+  DoneIcon,
 };

@@ -9,9 +9,11 @@ export type OrderNavigationProps = {
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
-      home: undefined;
-      signIn: undefined;
-      register: undefined;
+      Home: undefined;
+      CarDetails: undefined;
+      Scheduling: undefined;
+      SchedulingDetails: undefined;
+      SchedulingComplete: undefined;
     }
   }
 }

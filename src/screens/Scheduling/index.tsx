@@ -1,7 +1,5 @@
 import { useTheme } from "styled-components";
-
 import { Button, BackButton, Calendar } from "@components/index";
-
 import { ArrowIcon } from "@assets/index";
 
 import {
@@ -16,18 +14,21 @@ import {
   Wrapper,
   Footer,
 } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 interface Props {}
 
 function Scheduling({}: Props) {
+  const { navigate, goBack } = useNavigation();
   const { Colors } = useTheme();
+
+  const handleSchedulingDetails = () => {
+    navigate("SchedulingDetails");
+  };
   return (
     <Container>
       <Header>
-        <BackButton
-          color={Colors.BgSecondary}
-          onPress={() => console.log("Back")}
-        />
+        <BackButton color={Colors.BgSecondary} onPress={goBack} />
 
         <Heading>Escolha uma data de início e fim do aluguel</Heading>
 
@@ -56,7 +57,7 @@ function Scheduling({}: Props) {
       </Wrapper>
 
       <Footer>
-        <Button name="Confirmar" />
+        <Button name="Confirmar" onPress={handleSchedulingDetails} />
       </Footer>
     </Container>
   );

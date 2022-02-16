@@ -4,10 +4,16 @@ import { Logo } from "./../../assets";
 import { RFValue } from "react-native-responsive-fontsize";
 
 import { Car } from "@components/Card/Car";
+import { useNavigation } from "@react-navigation/native";
 
 interface HomeProps {}
 
 function Home({}: HomeProps) {
+  const { navigate } = useNavigation();
+
+  const handleCarDetails = () => {
+    navigate("CarDetails");
+  };
   const data = {
     brand: "string",
     name: "string",
@@ -28,7 +34,9 @@ function Home({}: HomeProps) {
       <CarList
         data={[1, 2, 3, 4, 5, 6, 7, 8]}
         keyExtractor={(i) => String(i)}
-        renderItem={({ item }) => <Car data={data} />}
+        renderItem={({ item }) => (
+          <Car data={data} onPress={handleCarDetails} />
+        )}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: 16,

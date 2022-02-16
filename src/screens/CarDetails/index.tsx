@@ -26,14 +26,20 @@ import {
   ForceIcon,
   PeopleIcon,
 } from "@assets/index";
+import { useNavigation } from "@react-navigation/native";
 
 interface Props {}
 
 function CarDetails({}: Props) {
+  const { navigate, goBack } = useNavigation();
+
+  const handleScheduling = () => {
+    navigate("Scheduling");
+  };
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => console.log("Back")} />
+        <BackButton onPress={goBack} />
       </Header>
 
       <CarImages>
@@ -86,7 +92,7 @@ function CarDetails({}: Props) {
       </Wrapper>
 
       <Footer>
-        <Button name="Confirmar" />
+        <Button name="Escolher periodo do Aluguel" onPress={handleScheduling} />
       </Footer>
     </Container>
   );

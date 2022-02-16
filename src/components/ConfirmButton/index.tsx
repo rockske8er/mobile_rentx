@@ -3,15 +3,14 @@ import { Container, Name } from "./styles";
 
 interface Props extends RectButtonProps {
   name: string;
-  color?: string;
 }
 
-function Button({ name, color, ...rest }: Props) {
+const ConfirmButton = ({ name, ...rest }: Props) => {
   return (
-    <Container backgroundColor={color} {...rest}>
+    <Container {...rest}>
       <Name>{name}</Name>
     </Container>
   );
-}
+};
 
-export { Button };
+export { ConfirmButton };

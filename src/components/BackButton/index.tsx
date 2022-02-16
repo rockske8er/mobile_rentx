@@ -10,6 +10,7 @@ interface Props extends BorderlessButtonProps {
 
 function BackButton({ color, ...rest }: Props) {
   const { Colors } = useTheme();
+
   return (
     <Container {...rest}>
       <MaterialIcons
