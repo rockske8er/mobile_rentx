@@ -1,18 +1,20 @@
 import { useTheme } from "styled-components";
 
-import { Calendar } from "@components/Calendar";
-import { BackButton } from "@components/index";
+import { Button, BackButton, Calendar } from "@components/index";
+
 import { ArrowIcon } from "@assets/index";
+
 import {
   Container,
   Header,
   Heading,
-  Wrapper,
   RentPeriod,
   Date,
   DateTitle,
   DateStart,
   DateEnd,
+  Wrapper,
+  Footer,
 } from "./styles";
 
 interface Props {}
@@ -44,9 +46,18 @@ function Scheduling({}: Props) {
         </RentPeriod>
       </Header>
 
-      <Wrapper>
+      <Wrapper
+        contentContainerStyle={{
+          paddingBottom: 24,
+        }}
+        showsVerticalScrollIndicator={false}
+      >
         <Calendar />
       </Wrapper>
+
+      <Footer>
+        <Button name="Confirmar" />
+      </Footer>
     </Container>
   );
 }

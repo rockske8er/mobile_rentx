@@ -1,5 +1,5 @@
 import { GasolineIcon } from "@assets/index";
-import { View } from "react-native";
+
 import {
   Container,
   CarDetail,

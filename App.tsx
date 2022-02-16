@@ -16,6 +16,7 @@ import theme from "./src/theme";
 import { Home } from "@screens/Home";
 import { CarDetails } from "@screens/CarDetails";
 import { Scheduling } from "@screens/Scheduling";
+import { SchedulingDetails } from "@screens/SchedulingDetails";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -38,7 +39,7 @@ const App = () => {
           translucent
           backgroundColor={"transparent"}
         />
-        <Scheduling />
+        <SchedulingDetails />
       </ThemeProvider>
     </GestureHandlerRootView>
   );

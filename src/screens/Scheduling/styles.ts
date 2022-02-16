@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components/native";
-import { Dimensions } from "react-native";
+import { Dimensions, ScrollView } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
 const { width } = Dimensions.get("screen");
 
@@ -30,14 +31,14 @@ export const Heading = styled.Text`
   margin-top: ${RFValue(16)}px;
 `;
 
-export const Wrapper = styled.View``;
+export const Wrapper = styled(ScrollView)``;
 
 export const RentPeriod = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 32px;
+  margin: 32px 0;
 `;
 
 export const Date = styled.View`
@@ -77,4 +78,8 @@ export const DateEnd = styled.Text<DateStartEndProps>`
       border-bottom-color: ${theme.Colors.Text};
       padding-bottom: 5px;
     `}
+`;
+
+export const Footer = styled.View`
+  padding: 24px;
 `;

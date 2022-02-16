@@ -53,6 +53,8 @@ function Calendar({}: Props) {
   return (
     <RNCaledar
       // minDate={String(new Date())}
+
+      minDate={String(new Date())}
       headerStyle={{
         backgroundColor: Colors.BgSecondary,
         borderBottomWidth: 0.5,

@@ -6,13 +6,13 @@ const { width } = Dimensions.get("window");
 
 export const Container = styled.View`
   /* padrao 110 */
-  width: ${RFValue(width) / 4}px;
-  height: ${RFValue(92)}px;
+  width: ${RFValue(width) / 4 - 8}px;
+  height: ${RFValue(90)}px;
   background-color: ${({ theme }) => theme.Colors.BgPrimary};
   justify-content: center;
   align-items: center;
   padding: ${RFValue(8)}px;
-  margin-bottom: ${RFValue(16)}px;
+  margin-bottom: ${RFValue(8)}px;
 `;
 
 export const Name = styled.Text`
