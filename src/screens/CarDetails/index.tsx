@@ -1,3 +1,4 @@
+import { useNavigation, useRoute } from "@react-navigation/native";
 import {
   CarImages,
   Container,
@@ -10,28 +11,25 @@ import {
   Rent,
   Period,
   Price,
+  Accessories,
   About,
-  CarAcessories,
   Footer,
 } from "./styles";
 
-import { Acessory, BackButton, Slider, Button } from "@components/index";
+import { BackButton, Slider, Button, Accessory } from "@components/index";
 
-import {
-  SpeedIcon,
-  AccelerationIcon,
-  EnergyIcon,
-  GasolineIcon,
-  ExchangeIcon,
-  ForceIcon,
-  PeopleIcon,
-} from "@assets/index";
-import { useNavigation } from "@react-navigation/native";
+import { ICar } from "@contracts/ICar";
 
-interface Props {}
+import { getAllAccessoryIcon } from "@utils/getAllAccessoryIcon";
 
-function CarDetails({}: Props) {
+type Params = {
+  car: ICar;
+};
+
+export function CarDetails() {
   const { navigate, goBack } = useNavigation();
+  const route = useRoute();
+  const { car } = route.params as Params;
 
   const handleScheduling = () => {
     navigate("Scheduling");
@@ -39,15 +37,11 @@ function CarDetails({}: Props) {
   return (
     <Container>
       <Header>
-        <BackButton onPress={goBack} />
+        <BackButton onPress={() => goBack()} />
       </Header>
 
       <CarImages>
-        <Slider
-          imagesUrl={[
-            "https://cdn.autopapo.com.br/carro/nissan/gtr-38-v6-premium-4wd-2017/destaque-v3.png",
-          ]}
-        />
+        <Slider imagesUrl={car.photos} />
       </CarImages>
 
       <Wrapper
@@ -59,43 +53,35 @@ function CarDetails({}: Props) {
       >
         <Details>
           <Description>
-            <Brand>Lamborghini</Brand>
-            <Name>Huracan</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
 
           <Rent>
-            <Period> Ao dia </Period>
-            <Price>R$ 200,00</Price>
+            <Period> {car.rent.period} </Period>
+            <Price>R$ {car.rent.price}</Price>
           </Rent>
         </Details>
 
-        <CarAcessories>
-          <Acessory name={"300KM/H"} icon={SpeedIcon} />
-          <Acessory name={"3.2s"} icon={AccelerationIcon} />
-          <Acessory name={"800 HP"} icon={ForceIcon} />
-          <Acessory name={"Gasolina"} icon={GasolineIcon} />
-          <Acessory name={"Auto"} icon={ExchangeIcon} />
-          <Acessory name={"2 Pessoas"} icon={PeopleIcon} />
-        </CarAcessories>
+        <Accessories>
+          {car.accessories.map((accessory) => (
+            <Accessory
+              key={accessory.name}
+              name={accessory.name}
+              icon={getAllAccessoryIcon(accessory.type)}
+            />
+          ))}
+        </Accessories>
 
-        <About>
-          Este é automóvel desportivo. Surgiu do lendário touro de lide
-          indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
-          para quem gosta de acelerar.
-        </About>
-
-        <About>
-          Este é automóvel desportivo. Surgiu do lendário touro de lide
-          indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
-          para quem gosta de acelerar.
-        </About>
+        <About>{car.about}</About>
       </Wrapper>
 
       <Footer>
-        <Button name="Escolher periodo do Aluguel" onPress={handleScheduling} />
+        <Button
+          name="Escolher periodo do Aluguel"
+          onPress={() => handleScheduling()}
+        />
       </Footer>
     </Container>
   );
 }
-
-export { CarDetails };

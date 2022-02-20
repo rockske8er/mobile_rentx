@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { ScrollView } from "react-native";
+
 import {
   getBottomSpace,
   getStatusBarHeight,
@@ -26,7 +26,7 @@ export const CarImages = styled.View`
   margin-top: ${getStatusBarHeight() + RFValue(32)}px;
 `;
 
-export const Wrapper = styled(ScrollView)``;
+export const Wrapper = styled.ScrollView``;
 
 export const Details = styled.View`
   width: 100%;
@@ -76,7 +76,7 @@ export const About = styled.Text`
   margin-top: ${RFValue(16)}px;
 `;
 
-export const CarAcessories = styled.View`
+export const Accessories = styled.View`
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;

@@ -55,7 +55,7 @@ export const DateTitle = styled.Text`
 export const DateStart = styled.Text<DateStartEndProps>`
   font-family: ${({ theme }) => theme.Fonts.Primary500};
   color: ${({ theme }) => theme.Colors.BgSecondary};
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(14)}px;
 
   ${({ theme, selected }) =>
     !selected &&
@@ -69,7 +69,7 @@ export const DateStart = styled.Text<DateStartEndProps>`
 export const DateEnd = styled.Text<DateStartEndProps>`
   font-family: ${({ theme }) => theme.Fonts.Primary500};
   color: ${({ theme }) => theme.Colors.BgSecondary};
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(14)}px;
 
   ${({ theme, selected }) =>
     !selected &&

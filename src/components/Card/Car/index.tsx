@@ -1,5 +1,3 @@
-import { GasolineIcon } from "@assets/index";
-import { useNavigation } from "@react-navigation/native";
 import { RectButtonProps } from "react-native-gesture-handler";
 
 import {
@@ -14,30 +12,19 @@ import {
   Type,
   CarImage,
 } from "./styles";
-
-type CarData = {
-  brand: string;
-  name: string;
-  rent: {
-    period: string;
-    price: number;
-  };
-  thumbnail: string;
-};
+import { ICar } from "@contracts/ICar";
+import { GasolineIcon } from "@assets/index";
+import { getAllAccessoryIcon } from "@utils/getAllAccessoryIcon";
 
 interface Props extends RectButtonProps {
-  data: CarData;
+  data: ICar;
 }
 
-const Car = ({ data, ...rest }: Props) => {
-  const { navigate } = useNavigation();
-
-  const handleCarDetails = () => {
-    navigate("CarDetails");
-  };
+export function Car({ data, ...rest }: Props) {
+  const MotorIcon = getAllAccessoryIcon(data.fuel_type);
 
   return (
-    <Container {...rest} onPress={handleCarDetails}>
+    <Container {...rest}>
       <CarDetail>
         <CarBrand>{data.brand}</CarBrand>
         <CarName>{data.name}</CarName>
@@ -50,6 +37,7 @@ const Car = ({ data, ...rest }: Props) => {
 
           <Type>
             <GasolineIcon />
+            {/* <MotorIcon /> */}
           </Type>
         </CarInfo>
       </CarDetail>
@@ -57,11 +45,9 @@ const Car = ({ data, ...rest }: Props) => {
       <CarImage
         resizeMode="contain"
         source={{
-          uri: "https://cdn.autopapo.com.br/carro/nissan/gtr-38-v6-premium-4wd-2017/destaque-v3.png",
+          uri: data.thumbnail,
         }}
       />
     </Container>
   );
-};
-
-export { Car };
+}

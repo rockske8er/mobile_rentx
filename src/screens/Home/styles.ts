@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
-import { FlatList } from "react-native";
+import { FlatList, FlatListProps } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { ICar } from "../../contracts/ICar";
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -26,4 +27,6 @@ export const TotalCars = styled.Text`
   color: ${({ theme }) => theme.Colors.Text};
 `;
 
-export const CarList = styled(FlatList)``;
+export const CarList = styled(
+  FlatList as new (props: FlatListProps<ICar>) => FlatList<ICar>
+)``;

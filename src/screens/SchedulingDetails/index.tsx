@@ -27,7 +27,7 @@ import {
   RentalPriceTotal,
 } from "./styles";
 
-import { Acessory, BackButton, Slider, Button } from "@components/index";
+import { Accessory, BackButton, Slider, Button } from "@components/index";
 
 import {
   SpeedIcon,
@@ -86,12 +86,12 @@ const SchedulingDetails = ({}: Props) => {
         </Details>
 
         <CarAcessories>
-          <Acessory name={"300KM/H"} icon={SpeedIcon} />
-          <Acessory name={"3.2s"} icon={AccelerationIcon} />
-          <Acessory name={"800 HP"} icon={ForceIcon} />
-          <Acessory name={"Gasolina"} icon={GasolineIcon} />
-          <Acessory name={"Auto"} icon={ExchangeIcon} />
-          <Acessory name={"2 Pessoas"} icon={PeopleIcon} />
+          <Accessory name={"300KM/H"} icon={SpeedIcon} />
+          <Accessory name={"3.2s"} icon={AccelerationIcon} />
+          <Accessory name={"800 HP"} icon={ForceIcon} />
+          <Accessory name={"Gasolina"} icon={GasolineIcon} />
+          <Accessory name={"Auto"} icon={ExchangeIcon} />
+          <Accessory name={"2 Pessoas"} icon={PeopleIcon} />
         </CarAcessories>
 
         <RentalPeriod>

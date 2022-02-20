@@ -1,6 +1,7 @@
 import Logo from "./logo.svg";
-import hybridIcon from "./hybrid.svg";
+import LogoBackgroundIcon from "./logo_background_gray.svg";
 
+import DoneIcon from "./done.svg";
 import ArrowIcon from "./arrow.svg";
 
 import SpeedIcon from "./speed.svg";
@@ -8,14 +9,14 @@ import AccelerationIcon from "./acceleration.svg";
 import PeopleIcon from "./people.svg";
 import ExchangeIcon from "./exchange.svg";
 import GasolineIcon from "./gasoline.svg";
+import HybridIcon from "./hybrid.svg";
 import ForceIcon from "./force.svg";
 import EnergyIcon from "./energy.svg";
-import LogoBackgroundIcon from "./logo_background_gray.svg";
-import DoneIcon from "./done.svg";
+import CarIcon from "./car.svg";
 
 export {
   Logo,
-  hybridIcon,
+  HybridIcon,
   EnergyIcon,
   ForceIcon,
   GasolineIcon,
@@ -26,4 +27,5 @@ export {
   ArrowIcon,
   LogoBackgroundIcon,
   DoneIcon,
+  CarIcon,
 };

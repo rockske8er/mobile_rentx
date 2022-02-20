@@ -1,29 +1,39 @@
+import { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { RFValue } from "react-native-responsive-fontsize";
+import { Logo } from "@assets/index";
+
 import { CarList, Container, Header, TotalCars } from "./styles";
 
-import { Logo } from "./../../assets";
-import { RFValue } from "react-native-responsive-fontsize";
-
-import { Car } from "@components/Card/Car";
-import { useNavigation } from "@react-navigation/native";
-
+import { ICar } from "@contracts/ICar";
+import { api } from "@services/api";
+import { Car, Loading } from "@components/index";
 interface HomeProps {}
 
 function Home({}: HomeProps) {
+  const [loading, setLoading] = useState(true);
+  const [cars, setCars] = useState<ICar[]>([]);
   const { navigate } = useNavigation();
 
-  const handleCarDetails = () => {
-    navigate("CarDetails");
+  const handleCarDetails = (car: ICar) => {
+    navigate("CarDetails", { car });
   };
-  const data = {
-    brand: "string",
-    name: "string",
-    rent: {
-      period: "ao dia",
-      price: 120,
-    },
-    thumbnail:
-      "https://cdn.autopapo.com.br/carro/nissan/gtr-38-v6-premium-4wd-2017/destaque-v3.png",
-  };
+
+  useEffect(() => {
+    async function getAllCars() {
+      try {
+        const { data } = await api.get("/cars");
+        setCars(data);
+      } catch (error) {
+        return console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getAllCars();
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -31,18 +41,22 @@ function Home({}: HomeProps) {
         <TotalCars>Total de 12 Carros</TotalCars>
       </Header>
 
-      <CarList
-        data={[1, 2, 3, 4, 5, 6, 7, 8]}
-        keyExtractor={(i) => String(i)}
-        renderItem={({ item }) => (
-          <Car data={data} onPress={handleCarDetails} />
-        )}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          marginVertical: 16,
-        }}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <CarList
+          data={cars}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => (
+            <Car data={item} onPress={() => handleCarDetails(item)} />
+          )}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 16,
+            marginVertical: 16,
+          }}
+        />
+      )}
     </Container>
   );
 }
