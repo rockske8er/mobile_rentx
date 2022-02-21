@@ -15,7 +15,7 @@ import {
   Wrapper,
   Footer,
 } from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Calendar,
@@ -25,14 +25,17 @@ import {
 } from "@components/Calendar";
 import { useState } from "react";
 import { format, parseISO } from "date-fns";
-import { getPlatformDate } from "@utils/getPlatformDate";
+import { Alert } from "react-native";
+import { ICar } from "@contracts/ICar";
 
 interface RentalPeriodProps {
-  start: number;
   startDateFormatted: string;
-  end: number;
   endDateFormatted: string;
 }
+
+type Params = {
+  car: ICar;
+};
 
 function Scheduling() {
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
@@ -48,10 +51,15 @@ function Scheduling() {
   );
 
   const { navigate, goBack } = useNavigation();
+
   const { Colors } = useTheme();
 
   const handleSchedulingDetails = () => {
-    navigate("SchedulingDetails");
+    if (!rentalPeriod.startDateFormatted || !rentalPeriod.endDateFormatted) {
+      return Alert.alert("Selecione o Intervalo para o ALuguel do Veiculo");
+    } else {
+      navigate("SchedulingDetails");
+    }
   };
 
   const handleChangeDate = (date: DayProps) => {
@@ -73,16 +81,8 @@ function Scheduling() {
     const lastDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-      start: startDate.timestamp,
-      end: endDate.timestamp,
-      startDateFormatted: format(
-        getPlatformDate(parseISO(firstDate)),
-        "dd/MM/yyyy"
-      ),
-      endDateFormatted: format(
-        getPlatformDate(parseISO(lastDate)),
-        "dd/MM/yyyy"
-      ),
+      startDateFormatted: format(parseISO(firstDate), "dd/MM/yyyy"),
+      endDateFormatted: format(parseISO(lastDate), "dd/MM/yyyy"),
     });
 
     console.log(rentalPeriod.startDateFormatted);

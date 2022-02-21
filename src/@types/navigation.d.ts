@@ -1,13 +1,5 @@
 import { ICar } from "@contracts/ICar";
 
-export type ProductNavigationProps = {
-  id?: string;
-};
-
-export type OrderNavigationProps = {
-  id: string;
-};
-
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -15,7 +7,9 @@ export declare global {
       CarDetails: {
         car: ICar;
       };
-      Scheduling: undefined;
+      Scheduling: {
+        car: ICar;
+      };
       SchedulingDetails: undefined;
       SchedulingComplete: undefined;
     }

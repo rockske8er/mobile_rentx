@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { Logo } from "@assets/index";
@@ -8,6 +9,9 @@ import { CarList, Container, Header, TotalCars } from "./styles";
 import { ICar } from "@contracts/ICar";
 import { api } from "@services/api";
 import { Car, Loading } from "@components/index";
+import { MyCarsButton } from "@components/MyCarsButton";
+import { useTheme } from "styled-components";
+import { View } from "react-native";
 interface HomeProps {}
 
 function Home({}: HomeProps) {
@@ -34,6 +38,8 @@ function Home({}: HomeProps) {
     getAllCars();
   }, []);
 
+  const { Colors } = useTheme();
+
   return (
     <Container>
       <Header>
@@ -57,6 +63,21 @@ function Home({}: HomeProps) {
           }}
         />
       )}
+      <View
+        style={{
+          position: "absolute",
+          bottom: 24,
+          right: 24,
+        }}
+      >
+        <MyCarsButton>
+          <Ionicons
+            size={32}
+            name={"ios-car-sport"}
+            color={Colors.ShapeLight}
+          />
+        </MyCarsButton>
+      </View>
     </Container>
   );
 }
