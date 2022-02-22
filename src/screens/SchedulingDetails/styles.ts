@@ -67,7 +67,7 @@ export const Price = styled.Text`
   font-size: ${RFValue(24)}px;
 `;
 
-export const CarAcessories = styled.View`
+export const CarAccessories = styled.View`
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;

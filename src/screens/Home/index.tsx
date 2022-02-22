@@ -23,6 +23,10 @@ function Home({}: HomeProps) {
     navigate("CarDetails", { car });
   };
 
+  const handleMyCars = () => {
+    navigate("MyCars");
+  };
+
   useEffect(() => {
     async function getAllCars() {
       try {
@@ -44,7 +48,7 @@ function Home({}: HomeProps) {
     <Container>
       <Header>
         <Logo width={RFValue(100)} height={RFValue(16)} />
-        <TotalCars>Total de 12 Carros</TotalCars>
+        <TotalCars>Total de {cars.length} Carros</TotalCars>
       </Header>
 
       {loading ? (
@@ -66,11 +70,11 @@ function Home({}: HomeProps) {
       <View
         style={{
           position: "absolute",
-          bottom: 24,
-          right: 24,
+          bottom: 20,
+          right: 20,
         }}
       >
-        <MyCarsButton>
+        <MyCarsButton onPress={handleMyCars}>
           <Ionicons
             size={32}
             name={"ios-car-sport"}

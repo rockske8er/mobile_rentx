@@ -32,12 +32,15 @@ export function CarDetails() {
   const { car } = route.params as Params;
 
   const handleScheduling = () => {
-    navigate("Scheduling");
+    navigate("Scheduling", {
+      car,
+    });
   };
+
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => goBack()} />
+        <BackButton onPress={goBack} />
       </Header>
 
       <CarImages>
@@ -77,10 +80,7 @@ export function CarDetails() {
       </Wrapper>
 
       <Footer>
-        <Button
-          name="Escolher periodo do Aluguel"
-          onPress={() => handleScheduling()}
-        />
+        <Button name="Escolher periodo do Aluguel" onPress={handleScheduling} />
       </Footer>
     </Container>
   );

@@ -1,5 +1,4 @@
 import { useTheme } from "styled-components";
-
 import { Button, BackButton } from "@components/index";
 import { ArrowIcon } from "@assets/index";
 
@@ -50,17 +49,10 @@ function Scheduling() {
     {} as RentalPeriodProps
   );
 
-  const { navigate, goBack } = useNavigation();
-
   const { Colors } = useTheme();
-
-  const handleSchedulingDetails = () => {
-    if (!rentalPeriod.startDateFormatted || !rentalPeriod.endDateFormatted) {
-      return Alert.alert("Selecione o Intervalo para o ALuguel do Veiculo");
-    } else {
-      navigate("SchedulingDetails");
-    }
-  };
+  const { navigate, goBack } = useNavigation();
+  const route = useRoute();
+  const { car } = route.params as Params;
 
   const handleChangeDate = (date: DayProps) => {
     let startDate = !lastSelectedDate.timestamp ? date : lastSelectedDate;
@@ -84,9 +76,13 @@ function Scheduling() {
       startDateFormatted: format(parseISO(firstDate), "dd/MM/yyyy"),
       endDateFormatted: format(parseISO(lastDate), "dd/MM/yyyy"),
     });
+  };
 
-    console.log(rentalPeriod.startDateFormatted);
-    console.log(rentalPeriod.endDateFormatted);
+  const handleSchedulingDetails = () => {
+    navigate("SchedulingDetails", {
+      car,
+      dates: Object.keys(markedDate),
+    });
   };
 
   return (
@@ -125,7 +121,11 @@ function Scheduling() {
       </Wrapper>
 
       <Footer>
-        <Button name="Confirmar" onPress={handleSchedulingDetails} />
+        <Button
+          name="Confirmar"
+          onPress={handleSchedulingDetails}
+          enabled={!!rentalPeriod.endDateFormatted}
+        />
       </Footer>
     </Container>
   );

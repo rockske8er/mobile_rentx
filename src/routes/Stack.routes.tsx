@@ -6,6 +6,7 @@ import {
   Scheduling,
   SchedulingDetails,
   SchedulingComplete,
+  MyCars,
 } from "@screens/index";
 
 const { Screen, Navigator, Group } = createNativeStackNavigator();
@@ -23,6 +24,7 @@ const StackAppRoutes = () => {
         <Screen name="Scheduling" component={Scheduling} />
         <Screen name="SchedulingDetails" component={SchedulingDetails} />
         <Screen name="SchedulingComplete" component={SchedulingComplete} />
+        <Screen name="MyCars" component={MyCars} />
       </Group>
     </Navigator>
   );

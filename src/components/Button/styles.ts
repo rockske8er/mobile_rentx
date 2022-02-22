@@ -4,6 +4,8 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 interface ButtonProps extends RectButtonProps {
   backgroundColor: string;
+  enabled?: boolean;
+  loading?: boolean;
 }
 
 export const Container = styled(RectButton)<ButtonProps>`
@@ -13,6 +15,8 @@ export const Container = styled(RectButton)<ButtonProps>`
   height: ${RFValue(56)}px;
   background-color: ${({ theme, backgroundColor }) =>
     backgroundColor ? backgroundColor : theme.Colors.Main};
+  opacity: ${({ enabled, loading }) =>
+    enabled === false || loading === true ? 0.5 : 1};
 `;
 
 export const Name = styled.Text`
