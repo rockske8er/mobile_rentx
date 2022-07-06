@@ -6,7 +6,7 @@ interface AccessoryProps {
   icon?: React.FC<SvgProps>;
 }
 
-export function Accessory({ name, icon: Icon }: AccessoryProps) {
+const Accessory = ({ name, icon: Icon }: AccessoryProps) => {
   return (
     <Container>
       <Icon width={32} height={32} />
@@ -14,3 +14,5 @@ export function Accessory({ name, icon: Icon }: AccessoryProps) {
     </Container>
   );
 }
+
+export { Accessory }

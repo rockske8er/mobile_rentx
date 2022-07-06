@@ -8,7 +8,7 @@ interface Props extends BorderlessButtonProps {
   color?: string;
 }
 
-function BackButton({ color, ...rest }: Props) {
+const BackButton = ({ color, ...rest }: Props) => {
   const { Colors } = useTheme();
 
   return (

@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+import { FlatList, ViewToken } from "react-native";
 import {
   Container,
   SliderDotsBox,
@@ -10,19 +12,39 @@ interface Props {
   imagesUrl: string[];
 }
 
-function Slider({ imagesUrl }: Props) {
+type ChangeSlideProps = {
+    viewableItems: ViewToken[];
+    changed: ViewToken[];
+}
+
+const  Slider = ({ imagesUrl }: Props) => {
+  const [indexImageSlide, setindexImageSlide] = useState(0)
+
+  const slideIndexImage = useRef(( info: ChangeSlideProps) => {
+    const index = info.viewableItems[0].index!;
+    setindexImageSlide(index)
+  });
+
   return (
     <Container>
       <SliderDotsBox>
-        <SliderDot active={true} />
-        <SliderDot active={false} />
-        <SliderDot active={false} />
-        <SliderDot active={false} />
+        {imagesUrl.map((_, index) => (
+          <SliderDot key={String(index)} active={index === indexImageSlide} />
+        ))}
       </SliderDotsBox>
 
-      <SliderWrapper>
-        <SliderImage resizeMode={"contain"} source={{ uri: imagesUrl[0] }} />
-      </SliderWrapper>
+      <FlatList
+        data={imagesUrl}
+        keyExtractor={(key) => key}
+        renderItem={({ item }) => (
+          <SliderWrapper>
+            <SliderImage resizeMode={"contain"} source={{ uri: item }} />
+          </SliderWrapper>
+        )}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        onViewableItemsChanged={slideIndexImage.current}
+      />
     </Container>
   );
 }

@@ -13,7 +13,6 @@ import {
   CarImage,
 } from "./styles";
 import { ICar } from "@contracts/ICar";
-import { GasolineIcon } from "@assets/index";
 import { getAllAccessoryIcon } from "@utils/getAllAccessoryIcon";
 
 interface Props extends RectButtonProps {
@@ -36,8 +35,7 @@ export function Car({ data, ...rest }: Props) {
           </Rent>
 
           <Type>
-            <GasolineIcon />
-            {/* <MotorIcon /> */}
+            <MotorIcon /> 
           </Type>
         </CarInfo>
       </CarDetail>

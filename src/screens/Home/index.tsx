@@ -15,7 +15,7 @@ import { View } from "react-native";
 interface HomeProps {}
 
 function Home({}: HomeProps) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [cars, setCars] = useState<ICar[]>([]);
   const { navigate } = useNavigation();
 
@@ -28,17 +28,21 @@ function Home({}: HomeProps) {
   };
 
   useEffect(() => {
-    async function getAllCars() {
+    console.log("executou a funcao");
+
+    const getAllCars = async () => {
       try {
         const { data } = await api.get("/cars");
+
+        console.log(data)
+
         setCars(data);
       } catch (error) {
         return console.log(error);
       } finally {
-        setLoading(false);
+        //setLoading(false);
       }
-    }
-
+    };
     getAllCars();
   }, []);
 
