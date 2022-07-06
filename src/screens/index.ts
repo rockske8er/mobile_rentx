@@ -4,6 +4,7 @@ import { Scheduling } from "./Scheduling";
 import { SchedulingDetails } from "./SchedulingDetails";
 import { SchedulingComplete } from "./SchedulingComplete";
 import { MyCars } from "./MyCars";
+import { Splash} from './Splash';
 
 export {
   Home,
@@ -12,4 +13,5 @@ export {
   SchedulingDetails,
   SchedulingComplete,
   MyCars,
+  Splash
 };

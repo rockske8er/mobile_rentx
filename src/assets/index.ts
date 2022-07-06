@@ -1,6 +1,6 @@
 import Logo from "./logo.svg";
 import LogoBackgroundIcon from "./logo_background_gray.svg";
-
+import Brand from './brand.svg'
 import DoneIcon from "./done.svg";
 import ArrowIcon from "./arrow.svg";
 
@@ -28,4 +28,5 @@ export {
   LogoBackgroundIcon,
   DoneIcon,
   CarIcon,
+  Brand
 };

@@ -1,11 +1,16 @@
 {
   "expo": {
-    "name": "RentXMobile",
-    "slug": "RentXMobile",
+    "name": "RentX",
+    "slug": "rentX",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1b1b1f"
+    }
   },
-  "name": "RentXMobile"
+  "name": "RentX"
 }
